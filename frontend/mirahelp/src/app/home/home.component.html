@@ -1,0 +1,16 @@
+<main>
+      <h1>Saúde</h1>
+      <div *ngFor="let corporation of corporations" class="cards">
+            <img src="imgs/doctor.jpg" alt="example">
+            <p class="cardtitle">{{corporation.name}}</p>
+      
+            <p>Abre ás: {{corporation.hourOpening}}</p>
+            <p>Fecha ás: {{corporation.hoursClose}}</p>
+            <p>Endereço: {{corporation.street}}, {{corporation.numberAdress}} - {{corporation.neighborhood}}</p>
+            <p>Contato: {{corporation.phoneNumber}}</p>
+            <p>Descrição: {{corporation.description}}</p>
+
+            <!-- <button type="button" class="btndetails" [routerLink]="['/details', corporation.id]">VER DETALHES</button> -->
+      </div>
+      
+</main>
