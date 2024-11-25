@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link th:href="@{/css/corporationsList.css}" rel="stylesheet">
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<title>Home</title>
+</head>
+
+<body>
+	<header th:replace="~{index :: header}"></header>
+	<main>
+		<h1>Unidades de Saúde</h1>
+		<div class="cardConteiner">
+
+			<div class="cards" data-th-each="corporation : ${CorporationsList}">
+				<img th:src="@{/images/doctor.jpg}" />
+
+				<p data-th-text="${corporation.name}" class="corporationName"></p>
+
+				<p>Descrição:
+					<span data-th-text="${corporation.name}"></span>
+				</p>
+				<p>Endereço:
+					<span data-th-text="${corporation.street}"></span>,
+					<span data-th-text="${corporation.numberAdress}"></span> -
+					<span data-th-text="${corporation.neighborhood}"></span>
+				</p>
+
+				<p>Telefone:
+					<span data-th-text="${corporation.phoneNumber}"></span>
+				</p>
+				<a th:href="@{'/details/'+${corporation.id}}" class="linkdetails" >
+					<span>Detalhes</span>
+				</a>
+			</div>
+		</div>
+	</main>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+
+
+h1 {
+	text-align: center;
+}
+
+form {
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0px 5%;
+}
+
+.myinput {
+	display: flex;
+	flex-direction: column;
+	margin-top: 20px;
+}
+
+input {
+	height: 35px;
+	border-color: rgb(182, 182, 182);
+	background-color: #CBDAE9;
+}
+
+input:focus{
+	background-color: #ADCFEE;
+}
+
+button{
+	margin: 20px 0px;
+	height: 40px;
+	padding: 5px 0px;
+	background-color: dodgerblue;
+	color: white;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+
+	main {
+		display: flex;
+		align-content: center;
+		justify-content: center;
+		flex-wrap: wrap;
+
+	}
+
+	h1 {
+		width: 100%;
+	}
+
+	form {
+		width: 500px;
+
+	}
+}

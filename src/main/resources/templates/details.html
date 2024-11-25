@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link th:href="@{/css/details.css}" rel="stylesheet">
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+	<title>Home</title>
+</head>
+
+<body>
+	<header th:replace="~{index :: header}"></header>
+	<main>
+		<button type="button" class="cadButton" id="showHide" onclick="showHide()">Adicionar atendimento</button>
+		<div class="formContainer" id="cadContainer">
+			<h2>Cadastro de atendimento médico</h2>
+			<form method="post" action="/savemedicalservice" th:object="${medicalService}">
+				<div class="inputTextConteiner">
+					<label>Digite o nome do atendimento</label>
+					<input type="text" placeholder="Especialidade médica..." th:field="*{name}">
+				</div>
+
+				<div class="checkboxContainer" id="mycheckbox">
+					<div data-th-each="checkboxValue : ${multiCheckboxAllValues}" class="labelCheckbox">
+
+						<input type="checkbox" class="checkMark" th:field="*{daysWeek}" th:value="${checkboxValue}">
+						<label th:for="${#ids.prev('daysWeek')}" th:text="${checkboxValue}"></label>
+
+					</div>
+				</div>
+
+				<input type="text" th:field="*{healthUnit}" th:value="#{corporation}" style="display:none">
+
+				<div class="selectConteiner">
+					<label>Que horas começa o atendimento?</label>
+					<select th:field="*{serviceStarts}">
+
+						<option value="00:00">00:00</option>
+						<option value="01:00">01:00</option>
+						<option value="02:00">02:00</option>
+						<option value="03:00">03:00</option>
+						<option value="04:00">04:00</option>
+						<option value="05:00">05:00</option>
+						<option value="06:00">06:00</option>
+						<option value="07:00">07:00</option>
+						<option value="08:00">08:00</option>
+						<option value="09:00">09:00</option>
+						<option value="10:00">10:00</option>
+						<option value="11:00">11:00</option>
+						<option value="12:00">12:00</option>
+						<option value="13:00">13:00</option>
+						<option value="14:00">14:00</option>
+						<option value="15:00">15:00</option>
+						<option value="16:00">16:00</option>
+						<option value="17:00">17:00</option>
+						<option value="18:00">18:00</option>
+						<option value="19:00">19:00</option>
+						<option value="20:00">20:00</option>
+						<option value="21:00">21:00</option>
+						<option value="22:00">22:00</option>
+						<option value="23:00">23:00</option>
+					</select>
+				</div>
+
+				<div class="selectConteiner">
+					<label>Que horas termina o atendimento?</label>
+					<select th:field="*{serviceEnds}">
+
+						<option value="00:00">00:00</option>
+						<option value="01:00">01:00</option>
+						<option value="02:00">02:00</option>
+						<option value="03:00">03:00</option>
+						<option value="04:00">04:00</option>
+						<option value="05:00">05:00</option>
+						<option value="06:00">06:00</option>
+						<option value="07:00">07:00</option>
+						<option value="08:00">08:00</option>
+						<option value="09:00">09:00</option>
+						<option value="10:00">10:00</option>
+						<option value="11:00">11:00</option>
+						<option value="12:00">12:00</option>
+						<option value="13:00">13:00</option>
+						<option value="14:00">14:00</option>
+						<option value="15:00">15:00</option>
+						<option value="16:00">16:00</option>
+						<option value="17:00">17:00</option>
+						<option value="18:00">18:00</option>
+						<option value="19:00">19:00</option>
+						<option value="20:00">20:00</option>
+						<option value="21:00">21:00</option>
+						<option value="22:00">22:00</option>
+						<option value="23:00">23:00</option>
+					</select>
+				</div>
+				<button type="submit" class="cadButton">Cadastrar</button>
+
+
+			</form>
+		</div>
+
+		<h1 th:text="${corporation.name}"></h1>
+		<div class="detailContainer">
+			<p>Descrição:
+				<span th:text="${corporation.description}"></span>
+			</p>
+			<p>Endereço:
+				<span th:text="${corporation.street}"></span>,
+				<span th:text="${corporation.numberAdress}"></span> -
+				<span th:text="${corporation.neighborhood}"></span>
+			</p>
+
+			<p>Telefone:
+				<span th:text="${corporation.phoneNumber}"></span>
+			</p>
+
+		</div>
+
+		<h2>Atendimentos disponíveis</h2>
+		<div class="medicalCardsConteiner">
+
+			<div th:each="medicalService : ${serviceArray}" class="medicalCards">
+				<p th:text="${medicalService.name}" class="medicalTitle"></p>
+
+				<div class="daysCardContainer">
+					<div th:each="day : ${medicalService.daysWeek}" class="daysCard">
+						<span th:text="${day}" class="cardsDays"></span>
+					</div>
+
+				</div>
+
+				<p>Atendimento começa ás
+					<span th:text="${medicalService.serviceStarts}"></span>
+				</p>
+				<p>Atendimento termina ás
+					<span th:text="${medicalService.serviceEnds}"></span>
+				</p>
+
+			</div>
+
+		</div>
+
+	</main>
+
+	<script th:inline="javascript">
+
+		function showHide() {
+			if (document.querySelector("#cadContainer").style.display === "none") {
+				document.querySelector("#cadContainer").style.display = "block";
+				document.querySelector("#showHide").textContent = "Desistir do cadastro";
+			} else {
+				document.querySelector("#cadContainer").style.display = "none";
+				document.querySelector("#showHide").innerHTML = "Adicionar atendimento";
+			}
+		}
+
+		const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+		let days = []
+		for (let i = 0; i < checkboxes.length; i++) {
+			checkboxes[i].addEventListener('click', function () {
+				if (checkboxes[i].checked) {
+					days.push(checkboxes[i].value)
+				}
+			})
+		}
+
+
+	</script>
+
+</body>
+
+</html>

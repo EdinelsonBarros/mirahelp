@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Cadastro Unidade de Sáude</title>
+	<link th:href="@{/css/createCorporation.css}" rel="stylesheet">
+	<link th:href="@{/css/main.css}" rel="stylesheet">
+</head>
+
+<body>
+		<header th:replace="~{index :: header}"></header>
+	<main>
+	<h1>Cadastro de Unidade de Sáude</h1>
+		<form method="post" action="/save">
+			<div class="myinput">
+				<input type="text" th:name="name" placeholder="Nome da Unidade de Saúde..." />
+			</div>
+
+			<div class="myinput">
+				<span>Endereço:</span>
+				<input type="text" th:name="street" placeholder="Rua..." />
+
+			</div>
+			<div class="myinput">
+				<input type="text" th:name="numberAdress" placeholder="Número..." />
+
+			</div>
+			<div class="myinput">
+				<input type="text" th:name="neighborhood" placeholder="Setor..." />
+
+			</div>
+			<div class="myinput">
+				<span>Horário de funcionamento:</span>
+				<input type="text" th:name="hourOpening" placeholder="Abre ás..." />
+
+			</div>
+			<div class="myinput">
+				<input type="text" th:name="hoursClose" placeholder="Fecha ás..." />
+
+			</div>
+			<div class="myinput">
+				<span>Contato da Unidade de Saúde:</span>
+				<input type="text" th:name="phoneNumber" placeholder="Número de telefone..." />
+
+			</div>
+
+			<div class="myinput">
+				<span>Descreva os atendimentos oferecidos:</span>
+				<input type="text" th:name="description" placeholder="Emergência, consultas, exames, cirurgias..." />
+
+			</div>
+			<button type="submit">Salvar cadastro</button>
+		</form>
+	</main>
+</body>
+
+</html>

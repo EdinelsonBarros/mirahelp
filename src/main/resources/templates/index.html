@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <link th:href="@{/css/main.css}" rel="stylesheet">
+      <title>Home</title>
+</head>
+<body>
+	<header>		
+		<nav id="navmenu" th:fragment="header">
+			<a th:href="@{/}">Home</a>
+			<a th:href="@{/corporationsList}">Un. de Saúde</a>
+			<a th:href="@{/createCorporation}">Cadastro</a>
+		</nav>
+	</header>
+	<main>
+		<h1>Unidades de Saúde</h1>
+		<div class="cards">
+			<img src="#" />
+			<p>Título</p>
+			<p>Nome</p>
+			<p>Descrição</p>
+			<p>Endereço</p>
+			<p>Rua:</p>
+			<p>Número:</p>
+			<p>Bairro:</p>
+			<p>Telefone:</p>
+			
+		</div>
+	</main>
+</body>
+</html>
